@@ -1,0 +1,44 @@
+{% extends 'home/base.html.twig' %}
+{% set active_page = 'admin' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+
+    <div class="container mt-5">
+            <div class="contacts col-8 offset-2" id="banner">
+                <div class="container mt-2">
+                    <div>
+                        <h2> Création d'utilisateur</h2>
+                        
+                        {{ form_start(form) }}
+                        <div class="error-log">
+                         {{ form_errors(form.password) }}
+                        </div>
+
+                        <div class="form-group inputGroup-style name-style">
+                            {{ form_widget(form.firstname, { 'attr': {'class':'form-control input-style', 'placeholder' : 'Entrez un prénom'}}) }}
+
+                            {{ form_widget(form.lastname, { 'attr': {'class':'form-control input-style', 'placeholder' : 'Entrez un nom'}}) }}
+
+                        </div>
+
+                        <div class="form-group inputGroup-style">
+                            {{ form_widget(form.email, { 'attr': {'class':'form-control input-style', 'placeholder' : 'Entrez une adresse email'}}) }}
+                        </div>
+                        <div class="form-group inputGroup-style">
+                            {{ form_widget(form.password, { 'attr': {'class':'form-control input-style', 'placeholder' : 'Entrez un mot de passe'}}) }}
+                        </div>
+
+                        <div class="mt-4">
+                            <button type="submit" class="btn btn-primary submit-style float-end">Inscription</button>
+                        </div>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+
+{% endblock %}

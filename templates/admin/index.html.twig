@@ -1,0 +1,56 @@
+{% extends 'home/base.html.twig' %}
+
+{% set active_page = 'admin' %}
+{% block title %}Utilisateurs{% endblock %}
+
+{% block body %}
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="contacts">
+                <div class=" mb-5">
+                    <h4>Liste des utilisateurs</h4>
+                </div>
+            
+                <a class="btn btn-primary float-end" href="{{ path("app_register") }}"> Créer un utilisateur</a>
+
+                <table id="example" class="table table-striped p-3">
+                    <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Email</th>
+                        <th>Rôle</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                            <tr>
+                                <td>{{ user.lastname }}</td>
+                                <td>{{ user.firstname }}</td>
+                                <td>{{ user.email }}</td>
+                                <td>
+                                    {% if "ROLE_ADMIN" in user.roles %}
+                                        <a href="{{ path("app_user_removeAdmin", {id: user.id}) }}" style="text-decoration: none;"<span class="badge bg-danger"ii>Admin</span></a>
+                                       
+                                    {% else%}
+                                        <a href="{{ path("app_user_setAdmin", {id: user.id}) }}"style="text-decoration: none;"<span class="badge bg-info">User</span></a>
+                                       
+                                    {% endif %}
+                                </td>
+                                 <td>
+                                    <a href="{{ path("app_user_edit", {id: user.id}) }}" class="btn btn-primary btn-sm">Edit</a>
+                                    <a href="{{ path("app_user_delete", {id: user.id}) }}" class="btn btn-primary btn-sm">Delete</a> 
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,4 @@
+
+framework:
+    mailer:
+        dsn: 'smtp://smtp.gmail.com:587?encryption=tls&auth_mode=login&username=semih.basbunar@gmail.com&password=Smhdu5703@'

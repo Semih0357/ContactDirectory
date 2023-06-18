@@ -1,0 +1,48 @@
+{% extends 'home/base.html.twig' %}
+
+{% set active_page = 'contacts' %}
+
+{% block title %}Contacts{% endblock %}
+
+{% block body %}
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="contacts">
+                <div class=" mb-5">
+                    <h4>Liste des contacts</h4>
+                </div>
+                
+                <a class="btn btn-primary float-end" href="{{ path("new_contact") }}">Nouveau contact</a>
+
+                <table id="example" class="table table-striped p-3">
+                    <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Téléphone</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for contact in contacts %}
+                    <tr>
+                        <td>{{ contact.lastname }}</td>
+                        <td>{{ contact.firstname }}</td>
+                        <td>{{ contact.phoneNumber }}</td>
+                        <td>
+                            <a href="{{ path("app_contact_manager", {id: contact.id}) }}" class="btn btn-primary btn-sm">Edit</a>
+                            <a href="{{ path("app_contact_delete", {id: contact.id}) }}" class="btn btn-primary btn-sm">Delete</a> 
+                            
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+                    </tbody>
+
+                </table>
+           </div>
+        </div>
+    </div>
+
+{% endblock %}
